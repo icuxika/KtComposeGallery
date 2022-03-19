@@ -3,8 +3,8 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.5.31"
-    id("org.jetbrains.compose") version "1.0.0"
+    kotlin("jvm") version "1.6.10"
+    id("org.jetbrains.compose") version "1.1.1"
 }
 
 group = "com.icuxika"
@@ -17,9 +17,11 @@ repositories {
 }
 
 dependencies {
+    val coroutinesVersion = "1.5.2"
     testImplementation(kotlin("test"))
     implementation(compose.desktop.currentOs)
     implementation(compose.materialIconsExtended)
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:$coroutinesVersion")
     implementation("com.squareup.okhttp3:okhttp:4.9.2")
     implementation("com.google.code.gson:gson:2.8.8")
 }
@@ -29,7 +31,7 @@ tasks.test {
 }
 
 tasks.withType<KotlinCompile>() {
-    kotlinOptions.jvmTarget = "16"
+    kotlinOptions.jvmTarget = "17"
 }
 
 compose.desktop {
